@@ -1,0 +1,2027 @@
+{
+	"info": {
+		"_postman_id": "a2fe93f1-cbb3-4e82-b649-ad4ec7a92450",
+		"name": "campus-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12280253"
+	},
+	"item": [
+		{
+			"name": "hod",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rupali",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rupali1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "departmentId",
+									"value": "6805d5b53e93baa0a0aec4bb",
+									"type": "text"
+								},
+								{
+									"key": "contact",
+									"value": "987645212",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Jalandhar",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/user.png"
+								},
+								{
+									"key": "qualification",
+									"value": "MTech",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/hod/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"hod",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_id",
+									"value": "6805ef22ccd5ea5893e1629b",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Rupali sharma",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rupalisharma@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "departmentId",
+									"value": "6805d5b53e93baa0a0aec4bb",
+									"type": "text"
+								},
+								{
+									"key": "contact",
+									"value": "987645288",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Jalandhar, Punjab",
+									"type": "text"
+								},
+								{
+									"key": "qualification",
+									"value": "MSC",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/male-user.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/hod/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"hod",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statusUpdate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805ef22ccd5ea5893e1629b",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/hod/statusUpdate",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"hod",
+								"statusUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/hod/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"hod",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805ef22ccd5ea5893e1629b",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/hod/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"hod",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "complaints",
+			"item": [
+				{
+					"name": "complaints(Delete)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "67e52fcdf38b16c1950091e1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/apis/complaint/delete",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"apis",
+								"complaint",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "complaints(Add)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "complaintRegarding",
+									"value": "Room",
+									"type": "text"
+								},
+								{
+									"key": "complaintDescription",
+									"value": "detailed description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/user.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/complaint/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"complaint",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/complaint/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"complaint",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805f96e5dd9f8df8e73bd3f",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/complaint/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"complaint",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805f96e5dd9f8df8e73bd3f",
+									"type": "text"
+								},
+								{
+									"key": "complaintResponse",
+									"value": "This response is for testing purpose",
+									"type": "text"
+								},
+								{
+									"key": "complaintStatus",
+									"value": "In Process",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/complaint/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"complaint",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "certificates",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "This is for testing of certificate",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/certificate/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"certificate",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "student_name",
+									"value": "Ramneek",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "course",
+									"value": "BCA",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "enrollment_year",
+									"value": "2024",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": "1.JPG",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/certificate/delete",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"certificate",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_id",
+									"value": "680869b03cdf26f85e416c59",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/user.png",
+									"disabled": true
+								},
+								{
+									"key": "requestStatus",
+									"value": "Pending",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/certificate/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"certificate",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/certificate/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"certificate",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "68061cb1d235ad796bdeda25",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/certificate/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"certificate",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "department",
+			"item": [
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805d5aa3e93baa0a0aec4b7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/dept/delete",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"dept",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statusupdate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805d5aa3e93baa0a0aec4b7",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/dept/statusUpdate",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"dept",
+								"statusUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "dept_name",
+									"value": "new dept",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/dept/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"dept",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805d5aa3e93baa0a0aec4b7",
+									"type": "text"
+								},
+								{
+									"key": "dept_name",
+									"value": "Department 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/dept/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"dept",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:9000/apis/dept/getall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"apis",
+								"dept",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805d5aa3e93baa0a0aec4b7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/dept/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"dept",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "courses",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "Dept_id",
+									"value": "6805d5b53e93baa0a0aec4bb",
+									"type": "text"
+								},
+								{
+									"key": "course_name",
+									"value": "Historyss",
+									"type": "text"
+								},
+								{
+									"key": "course_code",
+									"value": "Hist-102",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/course/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"course",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805e3c3bec4105088f5a55e",
+									"type": "text"
+								},
+								{
+									"key": "Dept_id",
+									"value": "6805d5b53e93baa0a0aec4bb",
+									"type": "text"
+								},
+								{
+									"key": "course_name",
+									"value": "History",
+									"type": "text"
+								},
+								{
+									"key": "course_code",
+									"value": "Hist-102",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/course/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"course",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/course/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"course",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805e3c3bec4105088f5a55e",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/course/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"course",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statusupdate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805e3c3bec4105088f5a55e",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/course/statusUpdate",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"course",
+								"statusUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "67e3c5a39afd8eb9b0014785",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/apis/course/delete",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"apis",
+								"course",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gatepass",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "This is demo of Gate Pass",
+									"type": "text"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-04-10",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-04-30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/gatepass/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"gatepass",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "67e3f161fc9378d07c8d4dbf",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/gatepass/delete",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"gatepass",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_id",
+									"value": "680628042f13fb14a5177ae4",
+									"type": "text"
+								},
+								{
+									"key": "requestStatus",
+									"value": "Pending",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/user.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/gatepass/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"gatepass",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/gatepass/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"gatepass",
+								"getall"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getall",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseurl}}apis/gatepass/getall",
+									"host": [
+										"{{baseurl}}apis"
+									],
+									"path": [
+										"gatepass",
+										"getall"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1322"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52a-PwIRx3JiMgVmZvJMQauZSHeFtrs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Apr 2025 04:56:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"success\": true,\n    \"message\": \"Data loaded successfully!!\",\n    \"TotalCount\": 1,\n    \"data\": [\n        {\n            \"_id\": \"680628042f13fb14a5177ae4\",\n            \"auto_id\": 1,\n            \"description\": \"This is demo of Gate Pass\",\n            \"image\": \"https://res.cloudinary.com/dzmk8y1dq/image/upload/v1745234646/bssudifxyohq0efcwe3v.png\",\n            \"requestStatus\": \"Approved\",\n            \"status\": true,\n            \"startDate\": \"2025-04-10T00:00:00.000Z\",\n            \"endDate\": \"2025-04-30T00:00:00.000Z\",\n            \"created_at\": \"2025-04-21T11:08:57.066Z\",\n            \"studentId\": {\n                \"_id\": \"6805e947476ff337d535edfb\",\n                \"auto_id\": 2,\n                \"name\": \"Student \",\n                \"email\": \"student@gmail.com\",\n                \"gender\": \"Female\",\n                \"contact\": \"9999888800\",\n                \"enrollment_year\": \"2023\",\n                \"image\": \"https://res.cloudinary.com/dzmk8y1dq/image/upload/v1745304688/zmvjrinrdc3obsicinsy.jpg\",\n                \"status\": true,\n                \"created_at\": \"2025-04-21T06:39:14.779Z\",\n                \"updated_at\": \"2025-04-22T06:51:26.842Z\",\n                \"userId\": \"6805e947476ff337d535edf9\",\n                \"departmentId\": \"6805d5b53e93baa0a0aec4bb\",\n                \"courseId\": \"6805e3e0f2c5e318596bac46\",\n                \"__v\": 0\n            },\n            \"courseId\": {\n                \"_id\": \"6805e3c3bec4105088f5a55e\",\n                \"auto_id\": 1,\n                \"course_name\": \"History\",\n                \"course_code\": \"Hist-102\",\n                \"status\": true,\n                \"created_at\": \"2025-04-21T06:20:06.962Z\",\n                \"Dept_id\": \"6805d5b53e93baa0a0aec4bb\",\n                \"__v\": 0\n            },\n            \"departmentId\": {\n                \"_id\": \"6805d5b53e93baa0a0aec4bb\",\n                \"auto_id\": 2,\n                \"dept_name\": \"new dept\",\n                \"status\": true,\n                \"created_at\": \"2025-04-21T05:20:18.819Z\",\n                \"updated_at\": \"2025-04-21T05:20:18.819Z\",\n                \"__v\": 0\n            },\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "680628042f13fb14a5177ae4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/gatepass/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"gatepass",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statusupdate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/gatepass/statusUpdate",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"gatepass",
+								"statusUpdate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "students",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Student 1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "student1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "male",
+									"type": "text"
+								},
+								{
+									"key": "contact",
+									"value": "9988776655",
+									"type": "text"
+								},
+								{
+									"key": "courseId",
+									"value": "6805e3c3bec4105088f5a55e",
+									"type": "text"
+								},
+								{
+									"key": "enrollment_year",
+									"value": "2024",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/user.png"
+								},
+								{
+									"key": "departmentId",
+									"value": "6805d5b53e93baa0a0aec4bb",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/students/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"students",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/students/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"students",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805e8b2476ff337d535edf0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/students/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"students",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "chandsnpreet@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gender",
+									"value": "F",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contact",
+									"value": "4734647678",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "course",
+									"value": "MSC",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "enrollment_year",
+									"value": "2023",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"value": "1.jpg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_id",
+									"value": "67e69210c690e3ca74b4e0fe",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/students/delete",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"students",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_id",
+									"value": "6805e8b2476ff337d535edf0",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Student 2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "student2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								},
+								{
+									"key": "contact",
+									"value": "9876556789",
+									"type": "text"
+								},
+								{
+									"key": "courseId",
+									"value": "6805e3e0f2c5e318596bac46",
+									"type": "text"
+								},
+								{
+									"key": "enrollment_year",
+									"value": "2025",
+									"type": "text"
+								},
+								{
+									"key": "departmentId",
+									"value": "6805d5b53e93baa0a0aec4bb",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/o7services/Downloads/male-user.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/students/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"students",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "6805e8b2476ff337d535edf0",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/students/statusUpdate",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"students",
+								"statusUpdate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "complaintId",
+									"value": "6805f96e5dd9f8df8e73bd3f",
+									"type": "text"
+								},
+								{
+									"key": "deadline",
+									"value": "2025-04-30",
+									"type": "text"
+								},
+								{
+									"key": "hodId",
+									"value": "6805ef53177273b8fbe7d0f1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/tasks/add",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"tasks",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/tasks/getall",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"tasks",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getsingle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "68060c8387459f80e36b5718",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/tasks/getsingle",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"tasks",
+								"getsingle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "68060c8387459f80e36b5718",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/tasks/update",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"tasks",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "_id",
+									"value": "67e6956e4ad30cfc78776275",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}apis/tasks/delete",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"tasks",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "adminprofile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/adminProfile",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"adminProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "studentProfile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/studentProfile",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"studentProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hodProfile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}apis/hodProfile",
+							"host": [
+								"{{baseurl}}apis"
+							],
+							"path": [
+								"hodProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user(login)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "student@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9000/apis/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"apis",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changepassword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "6805e947476ff337d535edf9",
+							"type": "text"
+						},
+						{
+							"key": "oldpassword",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "newpassword",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "confirmpassword",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseurl}}apis/user/changepassword",
+					"host": [
+						"{{baseurl}}apis"
+					],
+					"path": [
+						"user",
+						"changepassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseurl}}apis/dashboard",
+					"host": [
+						"{{baseurl}}apis"
+					],
+					"path": [
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
