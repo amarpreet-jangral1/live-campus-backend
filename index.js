@@ -6,13 +6,13 @@ const nodemailer = require("nodemailer");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 const cors = require("cors")
-// app.use(cors())
-app.use(cors({
+app.use(cors())
+// app.use(cors({
     
-    origin: "https://campushub-zeta.vercel.app",
-    // origin: 'https://campushub-smoky.vercel.app',
-    credentials: true // if you're sending cookies or headers
-}));
+//     origin: "https://campushub-zeta.vercel.app",
+//     // origin: 'https://campushub-smoky.vercel.app',
+//     credentials: true // if you're sending cookies or headers
+// }));
 app.use(express.static(__dirname + "/server/public/"))
 
 // require("dotenv").config()
