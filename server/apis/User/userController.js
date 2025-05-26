@@ -58,7 +58,7 @@ const login = async (req, res) => {
                     name: userdata.name,
                     email: userdata.email,
                     userType: userdata.userType,
-                    autoId: TotalCount + 1
+                    // autoId: TotalCount + 1
                 };
 
                 const token = jwt.sign(payload, secretkey);

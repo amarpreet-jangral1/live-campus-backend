@@ -127,39 +127,115 @@ const add = async (req, res) => {
 
 }
 
+// const deleteone = (req, res) => {
+//     var errMsgs = []
+//     if (!req.body._id) {
+//         errMsgs.push("_id is required!!")
+//     }
+//     if (errMsgs.length > 0) {
+//         res.json({
+//             status: 422,
+//             success: false,
+//             message: errMsgs
+//         })
+//     }
+//     else {
+//         // delete 
+//         hodModel.deleteOne({ _id: req.body._id })
+//             .then((hoddata) => {
+//                 res.json({
+//                     status: 200,
+//                     success: true,
+//                     message: "Data deleted!!",
+//                     data: hoddata
+//                 })
+//             })
+//             .catch((err) => {
+//                 res.send({
+//                     status: 500,
+//                     success: false,
+//                     message: "Internal server error",
+//                     errmsg: err
+//                 })
+//             })
+//     }
+// }
 const deleteone = (req, res) => {
-    var errMsgs = []
+    let errMsgs = [];
     if (!req.body._id) {
-        errMsgs.push("_id is required!!")
+        errMsgs.push("_id is required!!");
     }
+
     if (errMsgs.length > 0) {
-        res.json({
+        return res.json({
             status: 422,
             success: false,
             message: errMsgs
-        })
+        });
     }
-    else {
-        // delete 
-        hodModel.deleteOne({ _id: req.body._id })
-            .then((hoddata) => {
-                res.json({
-                    status: 200,
-                    success: true,
-                    message: "Data deleted!!",
-                    data: hoddata
-                })
-            })
-            .catch((err) => {
-                res.send({
-                    status: 500,
+
+    hodModel.findOne({ _id: req.body._id })
+        .then((hod) => {
+            if (!hod) {
+                return res.status(404).json({
+                    status: 404,
                     success: false,
-                    message: "Internal server error",
-                    errmsg: err
+                    message: "HOD not found!"
+                });
+            }
+
+            const userId = hod.userId;
+
+            // Delete the HOD
+            hodModel.deleteOne({ _id: req.body._id })
+                .then((hodData) => {
+                    if (userId) {
+                        // Delete the linked user
+                        userModel.deleteOne({ _id: userId })
+                            .then(() => {
+                                res.json({
+                                    status: 200,
+                                    success: true,
+                                    message: "Data deleted!!",
+                                    data: hodData
+                                });
+                            })
+                            .catch((err) => {
+                                res.status(500).json({
+                                    status: 500,
+                                    success: false,
+                                    message: "Error deleting user",
+                                    errmsg: err.message
+                                });
+                            });
+                    } else {
+                        res.json({
+                            status: 200,
+                            success: true,
+                            message: "HOD Not Found",
+                            data: hodData
+                        });
+                    }
                 })
-            })
-    }
-}
+                .catch((err) => {
+                    res.status(500).json({
+                        status: 500,
+                        success: false,
+                        message: "Error deleting HOD",
+                        errmsg: err.message
+                    });
+                });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                status: 500,
+                success: false,
+                message: "Internal server error",
+                errmsg: err.message
+            });
+        });
+};
+
 
 const update = (req, res) => {
     var errMsgs = []

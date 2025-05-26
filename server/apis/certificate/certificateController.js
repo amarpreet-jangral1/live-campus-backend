@@ -445,3 +445,349 @@ const getpagination = (req, res) => {
 
 
 module.exports = { add, deleteone, update, statusUpdate, getall, getSingle, getpagination, apply }
+
+
+
+
+// const certificateModel = require("./certificateModel");
+// const { uploadImg } = require("../../utilities/helper");
+// const studentModel = require("../Students/studentsModel");
+
+// // Insertion with validations
+// const add = async (req, res) => {
+//     let errMsgs = [];
+//     if (!req.body.description) {
+//         errMsgs.push("description is required!!");
+//     }
+
+//     if (errMsgs.length > 0) {
+//         return res.json({ status: 422, success: false, message: errMsgs });
+//     }
+
+//     let certificatecount = await certificateModel.countDocuments();
+//     certificateModel.findOne({
+//         $and: [
+//             { studentId: req.body.studentId },
+//             { courseId: req.body.courseId },
+//             { departmentId: req.body.departmentId }
+//         ]
+//     })
+//     .then(async (certificatedata) => {
+//         if (certificatedata == null) {
+//             studentModel.findOne({ userId: req.decoded._id })
+//                 .then((studentData) => {
+//                     let certificateobj = new certificateModel({
+//                         auto_id: certificatecount + 1,
+//                         studentId: studentData._id,
+//                         description: req.body.description,
+//                         courseId: studentData.courseId,
+//                         departmentId: studentData.departmentId // this becomes optional
+//                     });
+
+//                     certificateobj.save()
+//                         .then((prodata) => {
+//                             res.send({
+//                                 status: 200,
+//                                 success: true,
+//                                 message: "Request has been sent successfully!!",
+//                                 data: prodata
+//                             });
+//                         })
+//                         .catch((err) => {
+//                             res.send({
+//                                 status: 500,
+//                                 success: false,
+//                                 message: "Internal server error",
+//                                 errmsg: err
+//                             });
+//                         });
+//                 })
+//                 .catch(() => {});
+//         } else {
+//             res.json({ status: 422, success: false, message: "data already exists" });
+//         }
+//     })
+//     .catch((err) => {
+//         res.send({
+//             status: 500,
+//             success: false,
+//             message: "Internal server error",
+//             errmsg: err
+//         });
+//     });
+// };
+
+// const apply = async (req, res) => {
+//     let errMsgs = [];
+//     const requiredFields = ["student_name", "course", "department", "semester", "phone", "type"];
+//     requiredFields.forEach(field => {
+//         if (!req.body[field]) errMsgs.push(`${field} is required!!`);
+//     });
+
+//     if (errMsgs.length > 0) {
+//         return res.json({ status: 422, success: false, message: errMsgs });
+//     }
+
+//     let certificatecount = await certificateModel.countDocuments();
+//     certificateModel.findOne({ student_name: req.body.student_name })
+//         .then(async () => {
+//             let certificateobj = new certificateModel({
+//                 auto_id: certificatecount + 1,
+//                 student_name: req.body.student_name,
+//                 course: req.body.course,
+//                 department: req.body.department,
+//                 semester: req.body.semester,
+//                 phone: req.body.phone,
+//                 type: req.body.type
+//             });
+
+//             certificateobj.save()
+//                 .then((data) => {
+//                     res.send({
+//                         status: 200,
+//                         success: true,
+//                         message: "Apply Successfully!!",
+//                         data: data
+//                     });
+//                 })
+//                 .catch((err) => {
+//                     res.send({
+//                         status: 500,
+//                         success: false,
+//                         message: "Internal server error",
+//                         errmsg: err
+//                     });
+//                 });
+//         })
+//         .catch((err) => {
+//             res.send({
+//                 status: 500,
+//                 success: false,
+//                 message: "Internal server error",
+//                 errmsg: err
+//             });
+//         });
+// };
+
+// const deleteone = (req, res) => {
+//     if (!req.body._id) {
+//         return res.json({ status: 422, success: false, message: ["_id is required!!"] });
+//     }
+
+//     certificateModel.deleteOne({ _id: req.body._id })
+//         .then((data) => {
+//             res.json({ status: 200, success: true, message: "Data deleted!!", data });
+//         })
+//         .catch((err) => {
+//             res.send({
+//                 status: 500,
+//                 success: false,
+//                 message: "Internal server error",
+//                 errmsg: err
+//             });
+//         });
+// };
+
+// const update = async (req, res) => {
+//     if (!req.body._id) {
+//         return res.json({ status: 422, success: false, message: ["_id is required!!"] });
+//     }
+
+//     certificateModel.findOne({ _id: req.body._id })
+//         .then(async (certificatedata) => {
+//             if (!certificatedata) {
+//                 return res.send({ status: 404, success: false, message: "Data not found!!" });
+//             }
+
+//             if (req.body.requestStatus) {
+//                 certificatedata.requestStatus = req.body.requestStatus;
+//             }
+
+//             certificatedata.issuedDate = Date.now();
+
+//             if (req.file) {
+//                 try {
+//                     let url = await uploadImg(req.file.buffer);
+//                     certificatedata.image = url;
+//                 } catch (err) {
+//                     return res.send({
+//                         status: 500,
+//                         success: false,
+//                         message: "Error while uploading image",
+//                         errmsg: err.message
+//                     });
+//                 }
+//             }
+
+//             certificatedata.save()
+//                 .then((updateddata) => {
+//                     res.send({
+//                         status: 200,
+//                         success: true,
+//                         message: "Data updated Successfully!",
+//                         data: updateddata
+//                     });
+//                 })
+//                 .catch((err) => {
+//                     res.send({
+//                         status: 500,
+//                         success: false,
+//                         message: "Internal server error",
+//                         errmsg: err
+//                     });
+//                 });
+//         })
+//         .catch((err) => {
+//             res.send({
+//                 status: 500,
+//                 success: false,
+//                 message: "Internal server error",
+//                 errmsg: err
+//             });
+//         });
+// };
+
+// const statusUpdate = (req, res) => {
+//     const errMsgs = [];
+//     if (!req.body._id) errMsgs.push("_id is required!!");
+//     if (!req.body.status) errMsgs.push("status is required!!");
+
+//     if (errMsgs.length > 0) {
+//         return res.json({ status: 422, success: false, message: errMsgs });
+//     }
+
+//     certificateModel.findOne({ _id: req.body._id })
+//         .then((certificatedata) => {
+//             if (!certificatedata) {
+//                 return res.send({ status: 404, success: false, message: "Data not found" });
+//             }
+
+//             certificatedata.status = req.body.status;
+//             certificatedata.save()
+//                 .then((updateddata) => {
+//                     res.send({
+//                         status: 200,
+//                         success: true,
+//                         message: "Status updated successfully!",
+//                         data: updateddata
+//                     });
+//                 })
+//                 .catch((err) => {
+//                     res.send({
+//                         status: 500,
+//                         success: false,
+//                         message: "Internal server error",
+//                         errmsg: err
+//                     });
+//                 });
+//         })
+//         .catch((err) => {
+//             res.send({
+//                 status: 500,
+//                 success: false,
+//                 message: "Internal server error",
+//                 errmsg: err
+//             });
+//         });
+// };
+
+// const getall = async (req, res) => {
+//     let totalcount = await certificateModel.countDocuments();
+//     certificateModel.find()
+//         .populate({
+//             path: "studentId",
+//             populate: { path: "departmentId" }
+//         })
+//         .populate("courseId")
+//         .then(certificatedata => {
+//             res.json({
+//                 status: 200,
+//                 success: true,
+//                 message: "Data loaded successfully!!",
+//                 TotalCount: totalcount,
+//                 data: certificatedata
+//             });
+//         })
+//         .catch(err => {
+//             res.send({
+//                 status: 500,
+//                 success: false,
+//                 message: "Internal server error line getall",
+//                 error: err.message
+//             });
+//         });
+// };
+
+// const getSingle = (req, res) => {
+//     if (!req.body._id) {
+//         return res.json({ status: 422, success: false, message: ["_id is required!"] });
+//     }
+
+//     certificateModel.findOne({ _id: req.body._id })
+//         .populate({
+//             path: "studentId",
+//             populate: { path: "departmentId" }
+//         })
+//         .populate("courseId")
+//         .then((data) => {
+//             res.json({
+//                 status: 200,
+//                 success: true,
+//                 message: "Single Record loaded!",
+//                 data
+//             });
+//         })
+//         .catch((err) => {
+//             res.json({ status: 500, success: false, message: "Internal server error", err });
+//         });
+// };
+
+// const getpagination = (req, res) => {
+//     const errmsg = [];
+//     if (!req.body.pageno) errmsg.push("Page Number is required!");
+//     if (!req.body.limit) errmsg.push("Limit is required!");
+
+//     if (errmsg.length > 0) {
+//         return res.send({ status: 422, success: false, message: "error occurs", err: errmsg });
+//     }
+
+//     let limit = parseInt(req.body.limit);
+//     let pageno = parseInt(req.body.pageno);
+//     let skip = (pageno - 1) * limit;
+
+//     certificateModel.find()
+//         .populate({
+//             path: "studentId",
+//             populate: { path: "departmentId" }
+//         })
+//         .populate("courseId")
+//         .limit(limit)
+//         .skip(skip)
+//         .then((certificate_data) => {
+//             res.send({
+//                 status: 200,
+//                 success: true,
+//                 message: "pagination done",
+//                 data: certificate_data
+//             });
+//         })
+//         .catch((err) => {
+//             res.send({
+//                 status: 500,
+//                 success: false,
+//                 message: "internal server error",
+//                 errmsg: err
+//             });
+//         });
+// };
+
+// module.exports = {
+//     add,
+//     deleteone,
+//     update,
+//     statusUpdate,
+//     getall,
+//     getSingle,
+//     getpagination,
+//     apply
+// };

@@ -147,23 +147,64 @@ const deleteone = (req, res) => {
     }
     else {
         // delete 
-        studentsModel.deleteOne({ _id: req.body._id })
-            .then((studentdata) => {
-                res.json({
-                    status: 200,
-                    success: true,
-                    message: "Data deleted!!",
-                    data: studentdata
-                })
-            })
-            .catch((err) => {
-                res.send({
-                    status: 500,
+        studentsModel.findOne({ _id: req.body._id })
+        .then((student) => {
+            if (!student) {
+                return res.status(404).json({
+                    status: 404,
                     success: false,
-                    message: "Internal server error",
-                    errmsg: err
+                    message: "Student not found!"
+                });
+            }
+            const userId = student.userId;
+            studentsModel.deleteOne({ _id: req.body._id })
+               
+                    .then((studentData) => {
+                    if (userId) {
+                        // Delete the user linked to the student
+                        userModel.deleteOne({ _id: userId })
+                            .then(() => {
+                                res.json({
+                                    status: 200,
+                                    success: true,
+                                    message: "Data deleted!!",
+                                    data: studentData
+                                });
+                            })
+                            .catch((err) => {
+                                res.status(500).json({
+                                    status: 500,
+                                    success: false,
+                                    message: "Error deleting user",
+                                    errmsg: err.message
+                                });
+                            });
+                    } else {
+                        res.json({
+                            status: 200,
+                            success: true,
+                            message: "Student Not Found",
+                            data: studentData
+                        });
+                    }
                 })
-            })
+                .catch((err) => {
+                    res.send({
+                        status: 500,
+                        success: false,
+                        message: "Internal server error",
+                        errmsg: err
+                    })
+                })
+    })
+    .catch((err) => {
+                    res.send({
+                        status: 500,
+                        success: false,
+                        message: "Internal server error",
+                        errmsg: err
+                    })
+                })
     }
 }
 
@@ -205,6 +246,9 @@ const update = (req, res) => {
                     if (req.body.courseId) {
                         studentsdata.courseId = req.body.courseId
                     }
+                    if (req.body.departmentId) {
+                        studentsdata.departmentId = req.body.departmentId
+                    }
                     if (req.body.contact) {
                         studentsdata.contact = req.body.contact
                     }
@@ -238,7 +282,7 @@ const update = (req, res) => {
                                         udata.email = req.body.email
                                     }
                                     udata.save()
-                                        .then(updateUser => {
+                                        .then(updateddata => {
                                             res.send({
                                                 status: 200,
                                                 success: true,

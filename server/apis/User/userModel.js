@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
-    autoId: { type: Number, default: 0 },
+    // autoId: { type: Number, default: 0 },
     name: { type: String, default: "" },
     email: { type: String, default: "" },
     password: { type: String, default: "" },
