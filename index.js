@@ -9,7 +9,7 @@ const cors = require("cors")
 // app.use(cors())
 app.use(cors({
     
-    origin: "https://campushub-zeta.vercel.app/",
+    origin: "https://campushub-zeta.vercel.app",
     // origin: 'https://campushub-smoky.vercel.app',
     credentials: true // if you're sending cookies or headers
 }));
